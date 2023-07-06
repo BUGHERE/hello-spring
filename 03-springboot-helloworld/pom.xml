@@ -9,10 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.pdai</groupId>
-	<artifactId>springboot-helloworld</artifactId>
+	<artifactId>03-springboot-helloworld</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>03-springboot-helloworld</name>
-	<description>03-springboot-helloworld</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>

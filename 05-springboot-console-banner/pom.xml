@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.pdai</groupId>
-	<artifactId>04-springboot-db-h2-jpa</artifactId>
+	<artifactId>05-springboot-console-banner</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
 		<java.version>1.8</java.version>

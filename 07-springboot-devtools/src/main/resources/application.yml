@@ -1,0 +1,9 @@
+spring:
+  devtools:
+    restart:
+      enabled: true  #???????
+      additional-paths: src/main/java #????
+      exclude: WEB-INF/**
+#      log-condition-evaluation-delta: false # ????
+  thymeleaf:
+    cache: false #??Thymeleaf?????????

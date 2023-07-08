@@ -1,9 +1,9 @@
 spring:
   devtools:
     restart:
-      enabled: true  #???????
-      additional-paths: src/main/java #????
+      enabled: true  #设置开启热部署
+      additional-paths: src/main/java #重启目录
       exclude: WEB-INF/**
-#      log-condition-evaluation-delta: false # ????
+#      log-condition-evaluation-delta: false # 关闭日志
   thymeleaf:
-    cache: false #??Thymeleaf?????????
+    cache: false #使用Thymeleaf模板引擎，关闭缓存

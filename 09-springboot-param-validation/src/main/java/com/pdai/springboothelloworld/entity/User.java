@@ -15,10 +15,10 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 
 public class User {
-    @NotNull(message = "could not be null", groups = {AddValidationGroup.class})
+    @NotNull(message = "{user.msg.userId.notEmpty}", groups = {AddValidationGroup.class})
     private Integer userId;
 
-    @NotEmpty(message = "could not be empty", groups = {AddValidationGroup.class})
+    @NotEmpty(message = "{user.msg.userName.notEmpty}", groups = {AddValidationGroup.class})
     @Length(min = 1, max = 10, message = "user name should be 1-10", groups = {AddValidationGroup.class})
     private String userName;
 }

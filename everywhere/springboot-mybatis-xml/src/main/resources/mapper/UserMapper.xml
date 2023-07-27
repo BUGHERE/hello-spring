@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.everywhere.springbootmybatis.dao.UserDao">
+
+    <select id="findUserByName" parameterType="String" resultType="com.everywhere.springbootmybatis.bean.User">
+        SELECT * FROM user WHERE name = #{name}
+    </select>
+
+<!--    findAllUser-->
+    <select id="findAllUser" resultType="com.everywhere.springbootmybatis.bean.User">
+        SELECT * FROM user
+    </select>
+
+<!--    addUser-->
+    <insert id="insertUser" parameterType="com.everywhere.springbootmybatis.bean.User">
+        INSERT INTO user(name, age, money) VALUES (#{name}, #{age}, #{money})
+    </insert>
+
+<!--    updateUser-->
+    <update id="updateUser" parameterType="com.everywhere.springbootmybatis.bean.User">
+        UPDATE user SET name=#{name},age=#{age},money=#{money} WHERE id = #{id}
+    </update>
+
+<!--    deleteUserById-->
+    <delete id="deleteUser" parameterType="Integer">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+</mapper>

@@ -37,4 +37,13 @@ class SpringbootMybatisPlusApplicationTests {
         List<Employee> employees = employeeService.listAllByLastName("tom");
         employees.forEach(System.out::println);
     }
+
+    @Test
+    void saveEmployeeWithoutId() {
+        Employee employee = new Employee();
+        employee.setLastName("lisa");
+        employee.setEmail("lisa@qq.com");
+        employee.setAge(20);
+        employeeService.save(employee);
+    }
 }

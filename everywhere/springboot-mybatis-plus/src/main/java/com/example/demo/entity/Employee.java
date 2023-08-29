@@ -1,9 +1,9 @@
 package com.example.demo.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
+
+import java.time.LocalDateTime;
 
 @Data
 @TableName("tbl_employee")
@@ -23,4 +23,9 @@ public class Employee {
     private String lastName;
     private String email;
     private Integer age;
+    @TableField(fill = FieldFill.INSERT)  // 创建的时候自动填充
+    private LocalDateTime gmtCreate;
+    @TableField(fill = FieldFill.INSERT_UPDATE)  // 创建和更新的时候自动填充
+    private LocalDateTime gmtModified;
+
 }

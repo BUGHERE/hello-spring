@@ -8,6 +8,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @SpringBootTest
@@ -40,6 +41,26 @@ class SpringbootMybatisPlusApplicationTests {
 
     @Test
     void saveEmployeeWithoutId() {
+        Employee employee = new Employee();
+        employee.setLastName("lisa");
+        employee.setEmail("lisa@qq.com");
+        employee.setAge(20);
+        employeeService.save(employee);
+    }
+
+    @Test
+    void employeeServiceTest3() {
+        Employee employee = new Employee();
+        employee.setLastName("lisa");
+        employee.setEmail("lisa@qq.com");
+        employee.setAge(20);
+        // 设置时间
+        employee.setGmtCreate(LocalDateTime.now());
+        employee.setGmtModified(LocalDateTime.now());
+        employeeService.save(employee);
+    }
+    @Test
+    void employeeServiceTest4() {
         Employee employee = new Employee();
         employee.setLastName("lisa");
         employee.setEmail("lisa@qq.com");

@@ -67,4 +67,9 @@ class SpringbootMybatisPlusApplicationTests {
         employee.setAge(20);
         employeeService.save(employee);
     }
+
+    @Test
+    void employeeRemoveTest() {
+        employeeService.removeById(1696496974923980801L);
+    }
 }

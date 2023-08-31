@@ -1,0 +1,1 @@
+alter table tbl_employee add column is_deleted tinyint not null;

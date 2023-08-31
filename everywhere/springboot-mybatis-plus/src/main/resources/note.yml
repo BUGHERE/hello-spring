@@ -1,0 +1,10 @@
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 输出SQL日志
+
+  global-config:
+    db-config:
+      id-type: auto  # 自增方式
+      logic-delete-field: deleted # 逻辑删除属性名
+      logic-delete-value: -1 # 删除值  default: 1
+      logic-not-delete-value: 1 # 不删除值  default: 0

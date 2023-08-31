@@ -27,5 +27,10 @@ public class Employee {
     private LocalDateTime gmtCreate;
     @TableField(fill = FieldFill.INSERT_UPDATE)  // 创建和更新的时候自动填充
     private LocalDateTime gmtModified;
-
+    /**
+     * 逻辑删除属性
+     */
+    @TableLogic
+    @TableField("is_deleted")
+    private Boolean deleted;
 }

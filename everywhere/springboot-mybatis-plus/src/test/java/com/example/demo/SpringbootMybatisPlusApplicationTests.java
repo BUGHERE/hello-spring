@@ -121,4 +121,58 @@ class SpringbootMybatisPlusApplicationTests {
         // 最后查询
         System.out.println(shopMapper.selectById(1L));
     }
+
+    @Test
+    void employeeServiceTest5() {
+        Employee employee = new Employee();
+        employee.setLastName("jack");
+        employee.setEmail("jack@qq.com");
+        employee.setAge(35);
+        employee.setDeleted(false);
+        employeeService.save(employee);
+    }
+
+    /**
+     * 条件构造器
+     * 条件构造器是 MyBatis-Plus 提供的一个用于辅助开发的类，它可以帮助我们快速的生成一些带条件的 SQL 语句。
+     * 例如我们需要查询名字中包含'j'，年龄大于20岁，邮箱不为空的员工信息，我们可以使用条件构造器来实现。
+     */
+    @Test
+    void queryWrapperTest() {
+        // 查询名字中包含'j'，年龄大于20岁，邮箱不为空的员工信息
+        QueryWrapper<Employee> wrapper = new QueryWrapper<>();
+        wrapper.like("last_name", "j");
+        wrapper.gt("age", 20);
+        wrapper.isNotNull("email");
+        List<Employee> list = employeeMapper.selectList(wrapper);
+        list.forEach(System.out::println);
+    }
+
+    /**
+     * Lambda条件构造器
+     * LambdaQueryWrapper和QueryWrapper的作用是一样的，只是使用方式不同，它是使用Lambda表达式来构造查询条件的。
+     */
+    @Test
+    void lambdaQueryWrapperTest() {
+        // 查询名字中包含'j'，年龄大于20岁，邮箱不为空的员工信息
+        LambdaQueryWrapper<Employee> wrapper = new LambdaQueryWrapper<Employee>()
+                .like(Employee::getLastName, "j")
+                .gt(Employee::getAge, 20)
+                .isNotNull(Employee::getEmail);
+        List<Employee> list = employeeMapper.selectList(wrapper);
+        list.forEach(System.out::println);
+    }
+
+    /**
+     * UpdateWrapper可以用于更新操作，它的使用方式和QueryWrapper类似。
+     */
+    @Test
+    void updateWrapperTest() {
+        UpdateWrapper<Employee> wrapper = new UpdateWrapper<Employee>()
+                .set("age", 50)
+                .set("email", "emp@163.com")
+                .like("last_name", "j")
+                .gt("age", 20);
+        employeeMapper.update(null, wrapper);
+    }
 }

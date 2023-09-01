@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>springboot-beanutils-copy-properties</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springboot-beanutils-copy-properties</name>
 	<description>springboot-beanutils-copy-properties</description>

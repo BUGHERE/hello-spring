@@ -12,10 +12,11 @@ import org.mapstruct.factory.Mappers;
 public interface MapStructConverter extends Converter {
     MapStructConverter INSTANCE = Mappers.getMapper(MapStructConverter.class);
 
+    @Override
+    CodeDst convert(CodeSrc sourceCode);
+
     @Mapping(source = "status", target = "orderStatus")
     @Override
     OrderDst convert(OrderSrc sourceOrder);
 
-    @Override
-    CodeDst convert(CodeSrc sourceCode);
 }

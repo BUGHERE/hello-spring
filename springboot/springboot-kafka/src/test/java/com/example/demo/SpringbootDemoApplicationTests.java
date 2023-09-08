@@ -9,10 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class SpringbootDemoApplicationTests {
-    @Value("${kafka.topic.my-topic}")
-    String myTopic;
-    @Value("${kafka.topic.my-topic2}")
-    String myTopic2;
+    @Value("${kafka.topics[0].name}")
+    String topic1;
+    @Value("${kafka.topics[1].name}")
+    String topic2;
     @Autowired
     BookProducerService producer;
 
@@ -22,8 +22,8 @@ class SpringbootDemoApplicationTests {
      */
     @Test
     void contextLoads() {
-        this.producer.sendMessage(myTopic, new Book(1L, "111"));
-        this.producer.sendMessage(myTopic2, new Book(2L, "222"));
+        this.producer.sendMessage(topic1, new Book(1L, "111"));
+        this.producer.sendMessage(topic2, new Book(2L, "222"));
     }
 
 }

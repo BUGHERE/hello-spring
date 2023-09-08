@@ -16,10 +16,10 @@ import java.util.concurrent.atomic.AtomicLong;
 @RestController
 @RequestMapping(value = "/book")
 public class BookController {
-    @Value("${kafka.topic.my-topic}")
-    String myTopic;
-    @Value("${kafka.topic.my-topic2}")
-    String myTopic2;
+    @Value("${kafka.topics[0].name}")
+    String topic1;
+    @Value("${kafka.topics[1].name}")
+    String topic2;
     private final BookProducerService producer;
     private AtomicLong atomicLong = new AtomicLong();
 
@@ -29,7 +29,7 @@ public class BookController {
 
     @PostMapping
     public void sendMessageToKafkaTopic(@RequestParam("name") String name) {
-        this.producer.sendMessage(myTopic, new Book(atomicLong.addAndGet(1), name));
-        this.producer.sendMessage(myTopic2, new Book(atomicLong.addAndGet(1), name));
+        this.producer.sendMessage(topic1, new Book(atomicLong.addAndGet(1), name));
+        this.producer.sendMessage(topic2, new Book(atomicLong.addAndGet(1), name));
     }
 }

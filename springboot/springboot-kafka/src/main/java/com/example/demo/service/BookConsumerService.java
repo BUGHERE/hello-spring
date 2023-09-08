@@ -13,15 +13,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class BookConsumerService {
 
-    @Value("${kafka.topic.my-topic}")
-    private String myTopic;
-    @Value("${kafka.topic.my-topic2}")
-    private String myTopic2;
+    @Value("${kafka.topics[0].name}")
+    private String topic1;
+    @Value("${kafka.topics[1].name}")
+    private String topic2;
     private final Logger logger = LoggerFactory.getLogger(BookProducerService.class);
     private final ObjectMapper objectMapper = new ObjectMapper();
 
 
-    @KafkaListener(topics = {"${kafka.topic.my-topic}"}, groupId = "group1")
+    @KafkaListener(topics = {"${kafka.topics[0].name}"}, groupId = "group1")
     public void consumeMessage(ConsumerRecord<String, String> bookConsumerRecord) {
         try {
             Book book = objectMapper.readValue(bookConsumerRecord.value(), Book.class);
@@ -31,9 +31,14 @@ public class BookConsumerService {
         }
     }
 
-    @KafkaListener(topics = {"${kafka.topic.my-topic2}"}, groupId = "group2")
-    public void consumeMessage2(Book book) {
-        logger.info("consumer in group2 topic: {}, message -> {}", myTopic2, book.toString());
+    @KafkaListener(topics = {"${kafka.topics[1].name}"}, groupId = "group2")
+    public void consumeMessage2(ConsumerRecord<String, String> bookConsumerRecord) {
+        try {
+            Book book = objectMapper.readValue(bookConsumerRecord.value(), Book.class);
+            logger.info("consumer in group2 topic: {} partition:{}, message -> {}", bookConsumerRecord.topic(), bookConsumerRecord.partition(), book.toString());
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 }
 
